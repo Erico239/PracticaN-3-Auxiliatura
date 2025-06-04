@@ -104,7 +104,6 @@ class Farmacia:
         
         self.direccion = input("Dirección: ")
         
-        # Manejo de error para número de medicamentos
         while True:
             try:
                 self.numMedicamentos = int(input("Cantidad de Medicamentos: "))
@@ -135,7 +134,6 @@ class Farmacia:
     def getSucursal(self):
         return self.sucursal
 
-    # b) Mostrar medicamentos para la tos
     def mostrarMedicamentosTos(self):
         print(f"\nMedicamentos para la tos en Sucursal {self.sucursal}:")
         encontrados = False
@@ -146,7 +144,6 @@ class Farmacia:
         if not encontrados:
             print("No se encontraron medicamentos para la tos")
 
-    # c) Buscar medicamento por nombre
     def tieneMedicamento(self, nombre):
         for i in range(self.numMedicamentos):
             if self.m[i] is not None and self.m[i].nombre.lower() == nombre.lower():
@@ -162,7 +159,6 @@ class ArchFarmacia:
             with open(self.na, "wb") as f:
                 pickle.dump([], f)
     
-    # a) Adicionar farmacia al archivo
     def adicionar(self):
         farmacia = Farmacia()
         farmacia.leer()
@@ -173,7 +169,7 @@ class ArchFarmacia:
         with open(self.na, "wb") as f:
             pickle.dump(farmacias, f)
     
-    # a) Listar todas las farmacias
+    
     def listar(self):
         farmacias = self.leerFarmacias()
         if not farmacias:
@@ -184,7 +180,7 @@ class ArchFarmacia:
         for farmacia in farmacias:
             farmacia.mostrar()
     
-    # b) Mostrar medicamentos para la tos en sucursal específica
+    
     def mostrarMedicamentosTosSucursal(self, sucursalX):
         farmacias = self.leerFarmacias()
         encontrada = False
@@ -197,7 +193,7 @@ class ArchFarmacia:
         if not encontrada:
             print(f"No se encontró la sucursal {sucursalX}")
     
-    # c) Mostrar sucursales que tienen medicamento específico
+    
     def mostrarSucursalesConMedicamento(self, medicamento):
         farmacias = self.leerFarmacias()
         encontradas = False
@@ -211,7 +207,7 @@ class ArchFarmacia:
         if not encontradas:
             print(f"No se encontraron sucursales con el medicamento '{medicamento}'")
     
-    # Leer todas las farmacias del archivo
+    
     def leerFarmacias(self):
         if not os.path.exists(self.na) or os.path.getsize(self.na) == 0:
             return []
