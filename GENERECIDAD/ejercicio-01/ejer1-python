@@ -23,7 +23,7 @@ class Caja(Generic[T]):
 if __name__ == "__main__":
     # Caja para str
     caja_texto = Caja[str]()
-    caja_texto.guardar("Python Genérico")
+    caja_texto.guardar("Bolivia gana se va al mundia!!")
     
   
     caja_entero = Caja[int]()
